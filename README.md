@@ -41,9 +41,12 @@ function draw() {
 
 ## 🧪 Testing Locally
 
-To test your sketch locally:
+To test your sketch locally, use a local server:
 
-1. Open `index.html` in your web browser, or
-2. Use a local server (e.g., with Python: `python -m http.server` or with Node.js: `npx http-server`)
+- **Python**: `python -m http.server` or `python3 -m http.server`
+- **Node.js**: `npx http-server`
+- **VS Code**: Use the Live Server extension
 
-Visit `http://localhost:8000` (or the appropriate port) to view your sketch.
+Then visit `http://localhost:8000` (or the appropriate port) to view your sketch.
+
+Note: Opening `index.html` directly in a browser may not work due to CORS restrictions.
