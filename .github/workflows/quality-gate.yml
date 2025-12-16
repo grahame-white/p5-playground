@@ -21,7 +21,6 @@ name: Quality Gate
 
 permissions:
   actions: read
-  contents: read
 
 on:
   pull_request:
