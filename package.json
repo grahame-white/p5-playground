@@ -1,0 +1,23 @@
+{
+  "name": "p5-playground",
+  "version": "1.0.0",
+  "description": "A minimal p5.js sketch ready for GitHub Pages deployment",
+  "private": true,
+  "scripts": {
+    "serve": "npx http-server"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/grahame-white/p5-playground.git"
+  },
+  "keywords": [
+    "p5js",
+    "creative-coding",
+    "canvas"
+  ],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "p5": "^1.7.0"
+  }
+}

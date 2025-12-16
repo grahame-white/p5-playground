@@ -3,19 +3,8 @@
 
 version: 2
 updates:
-  # Monitor GitHub Actions workflows for updates
-  - package-ecosystem: "github-actions"
-    directory: "/"
-    schedule:
-      interval: "weekly"
-      day: "monday"
-      time: "09:00"
-    open-pull-requests-limit: 10
-    labels:
-      - "dependencies"
-      - "github-actions"
-
-  # Monitor npm packages (for future use or CDN-based dependencies)
+  # Monitor npm packages
+  # Note: Dependabot will activate when package.json is added to the repository
   - package-ecosystem: "npm"
     directory: "/"
     schedule:
