@@ -1,0 +1,60 @@
+# Super-Linter Workflow
+# This workflow uses super-linter to enforce code quality standards across the repository
+# Documentation: https://github.com/super-linter/super-linter
+#
+# Purpose: Automatically lint all code changes on push and pull requests to ensure
+# consistent code style and catch common errors before they reach the main branch.
+#
+# Configured linters:
+# - JavaScript (ESLint)
+# - HTML (HTMLHint)
+# - CSS (Stylelint)
+# - Markdown (markdownlint)
+# - YAML (yamllint)
+#
+# Maintenance: Update the super-linter version periodically to get new linters and fixes.
+# Check releases at: https://github.com/super-linter/super-linter/releases
+
+name: Super-Linter
+
+permissions: {}
+
+on:
+  # Run on pull requests targeting any branch
+  pull_request:
+
+jobs:
+  lint:
+    name: Lint Code Base
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: read
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+        with:
+          # Full git history is needed by super-linter to detect changed files
+          fetch-depth: 0
+          persist-credentials: false
+
+      - name: Run Super-Linter
+        uses: super-linter/super-linter/slim@502f4fe48a81a392756e173e39a861f8c8efe056 # v8.3.0
+        env:
+          # Validate only changed files
+          VALIDATE_ALL_CODEBASE: false
+          # Use default branch as the base for comparison
+          DEFAULT_BRANCH: main
+          # GitHub API token for additional features
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+          # Biome conflicts with other linters
+          VALIDATE_BIOME_FORMAT: false
+          VALIDATE_BIOME_LINT: false
+
+          # Linter behavior configuration
+          # Fail the workflow if linting errors are found
+          DISABLE_ERRORS: false
+          # Show detailed linter output for debugging
+          LOG_LEVEL: NOTICE
