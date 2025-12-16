@@ -1,0 +1,71 @@
+# Super-Linter Workflow
+# This workflow uses super-linter to enforce code quality standards across the repository
+# Documentation: https://github.com/super-linter/super-linter
+#
+# Purpose: Automatically lint all code changes on push and pull requests to ensure
+# consistent code style and catch common errors before they reach the main branch.
+#
+# Configured linters:
+# - JavaScript (ESLint)
+# - HTML (HTMLHint)
+# - CSS (Stylelint)
+# - Markdown (markdownlint)
+# - YAML (yamllint)
+#
+# Maintenance: Update the super-linter version periodically to get new linters and fixes.
+# Check releases at: https://github.com/super-linter/super-linter/releases
+
+name: Super-Linter
+
+on:
+  # Run on push to any branch
+  push:
+  # Run on pull requests targeting any branch
+  pull_request:
+
+jobs:
+  lint:
+    name: Lint Code Base
+    runs-on: ubuntu-latest
+    
+    permissions:
+      contents: read
+      packages: read
+      statuses: write
+    
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+        with:
+          # Full git history is needed by super-linter to detect changed files
+          fetch-depth: 0
+      
+      - name: Run Super-Linter
+        uses: super-linter/super-linter/slim@v8.3.0
+        env:
+          # Validate all code in the repository on push
+          VALIDATE_ALL_CODEBASE: ${{ github.event_name == 'push' }}
+          # Use default branch as the base for comparison
+          DEFAULT_BRANCH: main
+          # GitHub API token for additional features
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          
+          # Enable linters for languages present in this repository
+          VALIDATE_JAVASCRIPT_ES: true
+          VALIDATE_HTML: true
+          VALIDATE_CSS: true
+          VALIDATE_MARKDOWN: true
+          VALIDATE_YAML: true
+          VALIDATE_JSON: true
+          
+          # Disable linters for languages not present
+          VALIDATE_BASH: false
+          VALIDATE_DOCKERFILE: false
+          VALIDATE_PYTHON: false
+          VALIDATE_TYPESCRIPT: false
+          
+          # Linter behavior configuration
+          # Fail the workflow if linting errors are found
+          DISABLE_ERRORS: false
+          # Show detailed linter output for debugging
+          LOG_LEVEL: NOTICE
