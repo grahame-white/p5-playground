@@ -1,0 +1,23 @@
+# Dependabot configuration for automated dependency updates
+# https://docs.github.com/en/code-security/dependabot/dependabot-version-updates/configuration-options-for-the-dependabot.yml-file
+
+version: 2
+updates:
+  # Monitor npm packages
+  # Note: Dependabot will activate when package.json is added to the repository
+  - package-ecosystem: "npm"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+      time: "09:00"
+      timezone: "Etc/UTC"
+    open-pull-requests-limit: 10
+    labels:
+      - "dependencies"
+      - "npm"
+    # Group all npm updates into a single PR to reduce noise
+    groups:
+      npm-dependencies:
+        patterns:
+          - "*"

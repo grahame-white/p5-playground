@@ -44,9 +44,19 @@ function draw() {
 To test your sketch locally, use a local server:
 
 - **Python**: `python -m http.server` or `python3 -m http.server`
-- **Node.js**: `npx http-server`
+- **Node.js**: `npm run serve` (or `npx http-server`)
 - **VS Code**: Use the Live Server extension
 
 Then visit `http://localhost:8000` (or the appropriate port) to view your sketch.
 
 Note: Opening `index.html` directly in a browser may not work due to CORS restrictions.
+
+## 🔧 Dependency Management
+
+This project uses [Dependabot](https://docs.github.com/en/code-security/dependabot) for automated dependency updates:
+
+- **Automated Updates**: Dependabot checks for p5.js updates weekly (every Monday at 09:00 UTC)
+- **Security Updates**: Automatic security vulnerability notifications and updates
+- **Grouped PRs**: All npm updates are grouped into single pull requests to reduce noise
+
+The p5.js library is loaded from CDN in `index.html`, and tracked in `package.json` for dependency monitoring.
