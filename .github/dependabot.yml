@@ -11,6 +11,7 @@ updates:
       interval: "weekly"
       day: "monday"
       time: "09:00"
+      timezone: "Etc/UTC"
     open-pull-requests-limit: 10
     labels:
       - "dependencies"
