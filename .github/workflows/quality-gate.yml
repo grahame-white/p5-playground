@@ -19,8 +19,7 @@
 
 name: Quality Gate
 
-permissions:
-  actions: read
+permissions: {}
 
 on:
   pull_request:
@@ -29,6 +28,9 @@ jobs:
   quality-gate:
     name: Quality Gate Check
     runs-on: ubuntu-latest
+
+    permissions:
+      actions: read
 
     steps:
       - name: Check Workflow Status
