@@ -17,9 +17,9 @@
 
 name: Super-Linter
 
+permissions: {}
+
 on:
-  # Run on push to any branch
-  push:
   # Run on pull requests targeting any branch
   pull_request:
 
@@ -43,26 +43,12 @@ jobs:
       - name: Run Super-Linter
         uses: super-linter/super-linter/slim@v8.3.0
         env:
-          # Validate all code in the repository on push
-          VALIDATE_ALL_CODEBASE: ${{ github.event_name == 'push' }}
+          # Validate only changed files
+          VALIDATE_ALL_CODEBASE: false
           # Use default branch as the base for comparison
           DEFAULT_BRANCH: main
           # GitHub API token for additional features
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          
-          # Enable linters for languages present in this repository
-          VALIDATE_JAVASCRIPT_ES: true
-          VALIDATE_HTML: true
-          VALIDATE_CSS: true
-          VALIDATE_MARKDOWN: true
-          VALIDATE_YAML: true
-          VALIDATE_JSON: true
-          
-          # Disable linters for languages not present
-          VALIDATE_BASH: false
-          VALIDATE_DOCKERFILE: false
-          VALIDATE_PYTHON: false
-          VALIDATE_TYPESCRIPT: false
           
           # Linter behavior configuration
           # Fail the workflow if linting errors are found

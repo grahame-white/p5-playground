@@ -21,9 +21,9 @@
 
 name: Unit Tests
 
+permissions: {}
+
 on:
-  # Run on push to any branch
-  push:
   # Run on pull requests targeting any branch
   pull_request:
 
