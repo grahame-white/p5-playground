@@ -40,7 +40,7 @@ jobs:
           persist-credentials: false
 
       - name: Run Super-Linter
-        uses: super-linter/super-linter/slim@4bc8e9b889cf012d3d0e31b0b0a2e9b26d10d5c4 # v8.3.0
+        uses: super-linter/super-linter/slim@502f4fe48a81a392756e173e39a861f8c8efe056 # v8.3.0
         env:
           # Validate only changed files
           VALIDATE_ALL_CODEBASE: false
