@@ -63,7 +63,7 @@ jobs:
         if: matrix.node-version == '20.x'
 
       - name: Upload Coverage Report
-        uses: actions/upload-artifact@ef09cdac3e2d3e60d8ccadda691f4f1cec5035cb # v4.5.0
+        uses: actions/upload-artifact@ef09cdac3e2d3e60d8ccadda691f4f1cec5035cb # v4.6.0
         if: matrix.node-version == '20.x'
         with:
           name: coverage-report
