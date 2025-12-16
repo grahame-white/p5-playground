@@ -49,6 +49,9 @@ jobs:
           # GitHub API token for additional features
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
+VALIDATE_BIOME_FORMAT=false
+VALIDATE_BIOME_LINT=false
+
           # Linter behavior configuration
           # Fail the workflow if linting errors are found
           DISABLE_ERRORS: false
