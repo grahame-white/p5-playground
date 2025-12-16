@@ -1,6 +1,6 @@
 # Quality Gate Workflow
-# This workflow serves as a required status check that depends on both
-# linting and unit testing workflows completing successfully.
+# This workflow serves as a required status check that aggregates results from
+# linting and unit testing workflows.
 #
 # Purpose: Provides a single quality gate that can be used as a branch
 # protection rule requirement. This ensures that both code quality (linting)
@@ -14,12 +14,14 @@
 # - Easier branch protection configuration
 # - Clear signal of overall code quality status
 #
-# Maintenance: This workflow automatically depends on the other workflows.
-# No updates needed unless workflow names change.
+# Maintenance: If workflow or job names change in super-linter.yml or unit-test.yml,
+# update the corresponding check names in the steps below.
 
 name: Quality Gate
 
-permissions: {}
+permissions:
+  actions: read
+  contents: read
 
 on:
   pull_request:
@@ -39,7 +41,7 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
           checkName: "Lint Code Base"
           ref: ${{ github.event.pull_request.head.sha }}
-          timeoutSeconds: 600
+          timeoutSeconds: 300
       
       - name: Wait for Unit Tests (Node 18.x)
         uses: fountainhead/action-wait-for-check@v1.2.0
@@ -47,7 +49,7 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
           checkName: "Run Unit Tests (18.x)"
           ref: ${{ github.event.pull_request.head.sha }}
-          timeoutSeconds: 600
+          timeoutSeconds: 300
       
       - name: Wait for Unit Tests (Node 20.x)
         uses: fountainhead/action-wait-for-check@v1.2.0
@@ -55,7 +57,7 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
           checkName: "Run Unit Tests (20.x)"
           ref: ${{ github.event.pull_request.head.sha }}
-          timeoutSeconds: 600
+          timeoutSeconds: 300
       
       - name: Quality Gate Passed
         run: |
