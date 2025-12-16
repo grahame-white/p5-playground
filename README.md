@@ -55,7 +55,7 @@ Note: Opening `index.html` directly in a browser may not work due to CORS restri
 
 This project uses [Dependabot](https://docs.github.com/en/code-security/dependabot) for automated dependency updates:
 
-- **Automated Updates**: Dependabot checks for p5.js updates weekly (every Monday at 09:00)
+- **Automated Updates**: Dependabot checks for p5.js updates weekly (every Monday at 09:00 UTC)
 - **Security Updates**: Automatic security vulnerability notifications and updates
 - **Grouped PRs**: All npm updates are grouped into single pull requests to reduce noise
 

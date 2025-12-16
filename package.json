@@ -18,7 +18,6 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "_comment_p5": "The p5 dependency is tracked solely for Dependabot monitoring. It is loaded from CDN in index.html and not used in the build process.",
     "p5": "^1.7.0"
   }
 }
