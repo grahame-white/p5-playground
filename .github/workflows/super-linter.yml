@@ -27,21 +27,22 @@ jobs:
   lint:
     name: Lint Code Base
     runs-on: ubuntu-latest
-    
+
     permissions:
       contents: read
       packages: read
       statuses: write
-    
+
     steps:
       - name: Checkout Code
-        uses: actions/checkout@v4
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
         with:
           # Full git history is needed by super-linter to detect changed files
           fetch-depth: 0
-      
+          persist-credentials: false
+
       - name: Run Super-Linter
-        uses: super-linter/super-linter/slim@v8.3.0
+        uses: super-linter/super-linter/slim@4bc8e9b889cf012d3d0e31b0b0a2e9b26d10d5c4 # v8.3.0
         env:
           # Validate only changed files
           VALIDATE_ALL_CODEBASE: false
@@ -49,7 +50,7 @@ jobs:
           DEFAULT_BRANCH: main
           # GitHub API token for additional features
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          
+
           # Linter behavior configuration
           # Fail the workflow if linting errors are found
           DISABLE_ERRORS: false

@@ -45,7 +45,7 @@ To test your sketch locally, use a local server:
 
 - **Python**: `python -m http.server` or `python3 -m http.server`
 - **Node.js**: `npm run serve` (or `npx http-server`)
-- **VS Code**: Use the Live Server extension
+- **Visual Studio Code**: Use the Live Server extension
 
 Then visit `http://localhost:8000` (or the appropriate port) to view your sketch.
 
@@ -58,11 +58,13 @@ This project includes automated unit testing with Jest:
 ### Running Tests Locally
 
 First, install dependencies:
+
 ```bash
 npm install
 ```
 
 Then run tests:
+
 ```bash
 # Run all tests once
 npm test
@@ -81,9 +83,10 @@ npm run test:coverage
 - Use Jest's `describe()` and `test()` functions to structure your tests
 
 Example test:
+
 ```javascript
-describe('My Feature', () => {
-  test('should work correctly', () => {
+describe("My Feature", () => {
+  test("should work correctly", () => {
     expect(1 + 1).toBe(2);
   });
 });
@@ -94,6 +97,7 @@ describe('My Feature', () => {
 This repository uses GitHub Actions workflows to maintain code quality:
 
 ### Super-Linter Workflow
+
 - **Purpose**: Automatically lints all code changes for style and quality
 - **When it runs**: On every push and pull request
 - **What it checks**: JavaScript, HTML, CSS, Markdown, YAML, and JSON files
@@ -101,6 +105,7 @@ This repository uses GitHub Actions workflows to maintain code quality:
 - **Linter version**: super-linter v8.3.0 (slim)
 
 ### Unit Test Workflow
+
 - **Purpose**: Runs automated tests to catch bugs and regressions
 - **When it runs**: On every push and pull request
 - **Test framework**: Jest with jsdom environment
@@ -109,18 +114,20 @@ This repository uses GitHub Actions workflows to maintain code quality:
 - **Coverage reports**: Generated and uploaded as artifacts
 
 ### Viewing Workflow Results
+
 1. Go to the **Actions** tab in your GitHub repository
 2. Select a workflow run to see detailed results
 3. Click on individual jobs to view logs and error messages
 4. Download coverage reports from the artifacts section
 
 ### Local Linting
+
 To maintain code quality locally before pushing:
+
 - Use ESLint for JavaScript
 - Use HTMLHint for HTML
-- Use Stylelint for CSS
+- Use stylelint for CSS
 - Configure your IDE with appropriate linters
-
 
 ## 🔧 Dependency Management
 
